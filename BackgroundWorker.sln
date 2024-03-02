@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BackgroundWorker.Api", "BackgroundWorker.Api\BackgroundWorker.Api.csproj", "{70270767-3E25-4E0D-B34F-E2BA78FC7F5B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BackgroundWorker.Service", "BackgroundWorker.Service\BackgroundWorker.Service.csproj", "{6819EA39-98AD-46AB-BD13-315CB93CF19F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{70270767-3E25-4E0D-B34F-E2BA78FC7F5B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{70270767-3E25-4E0D-B34F-E2BA78FC7F5B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{70270767-3E25-4E0D-B34F-E2BA78FC7F5B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{70270767-3E25-4E0D-B34F-E2BA78FC7F5B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6819EA39-98AD-46AB-BD13-315CB93CF19F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6819EA39-98AD-46AB-BD13-315CB93CF19F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6819EA39-98AD-46AB-BD13-315CB93CF19F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6819EA39-98AD-46AB-BD13-315CB93CF19F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

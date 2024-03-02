@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "WNHlD5+DzaY5o6TOn7KzM6BuKgbK+pLR0C/pguSgRFI=",
+  "Source": "BackgroundWorker.Api",
+  "BasePath": "_content/BackgroundWorker.Api",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
