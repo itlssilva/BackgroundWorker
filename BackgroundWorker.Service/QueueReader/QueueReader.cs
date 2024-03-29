@@ -41,18 +41,18 @@ public class QueueReader : IQueueReader
         }
         catch (MQException ex)
         {
-            if (ex.ReasonCode == MQC.MQRC_NO_MSG_AVAILABLE)
+            switch (ex.ReasonCode)
             {
-                ReportQueueEmpty(ex);
-                Console.WriteLine(ex.Message);
-                // throw ex;
-            }
-            else
-            {
-                //_logger.LogError($"Error getting message from IBM MQ {ex.Message} {ex.GetErrorCodeDescription()}");
-                throw ex;
+                case MQC.MQRC_HOST_NOT_AVAILABLE or
+                     MQC.MQRC_NO_MSG_AVAILABLE or
+                     MQC.MQRC_CONNECTION_BROKEN:
+                    Console.WriteLine(ex.Message);
+                    break;
+                default:
+                    throw;
             }
 
+            ReportQueueEmpty(ex);
         }
         catch (Exception ex)
         {
