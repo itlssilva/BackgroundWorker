@@ -1,4 +1,4 @@
-using BackgroundWorker.Api.QueueReader;
+using BackgroundWorker.Api.MqQueueReader;
 
 namespace BackgroundWorker.Api;
 

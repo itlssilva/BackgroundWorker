@@ -1,7 +1,7 @@
 using BackgroundWorker.Api.Models;
 using IBM.WMQ;
 
-namespace BackgroundWorker.Api.MQClient;
+namespace BackgroundWorker.Api.ClientMq;
 
 public interface IMQClient
 {

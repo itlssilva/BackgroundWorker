@@ -1,6 +1,6 @@
 using BackgroundWorker.Api.Models;
 
-namespace BackgroundWorker.Api.QueueReader;
+namespace BackgroundWorker.Api.MqQueueReader;
 
 public interface IQueueReader
 {

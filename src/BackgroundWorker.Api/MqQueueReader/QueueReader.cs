@@ -1,9 +1,9 @@
 using System.Text;
 using BackgroundWorker.Api.Models;
-using BackgroundWorker.Api.MQClient;
+using BackgroundWorker.Api.ClientMq;
 using IBM.WMQ;
 
-namespace BackgroundWorker.Api.QueueReader;
+namespace BackgroundWorker.Api.MqQueueReader;
 
 public class QueueReader : IQueueReader
 {

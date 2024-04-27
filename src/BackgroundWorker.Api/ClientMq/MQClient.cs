@@ -4,7 +4,7 @@ using IBM.WMQ;
 using Polly;
 using Polly.Retry;
 
-namespace BackgroundWorker.Api.MQClient;
+namespace BackgroundWorker.Api.ClientMq;
 
 public class MQClient : IMQClient
 {
