@@ -76,8 +76,8 @@ public class QueueReader : IQueueReader
         try
         {
             destination = _mqClient.GetResilientQueue(MQC.MQOO_BROWSE | MQC.MQOO_FAIL_IF_QUIESCING, EParametersQueue.Output);
-            MQMessage receivedMsg = new MQMessage();
-            MQGetMessageOptions gmo = new MQGetMessageOptions
+            MQMessage receivedMsg = new();
+            MQGetMessageOptions gmo = new()
             {
                 Options = MQC.MQGMO_BROWSE_NEXT
             };            
@@ -113,7 +113,7 @@ public class QueueReader : IQueueReader
 
 
     #region Helpers
-    private QueueMessage ToQueueMessage(MQMessage message)
+    private static QueueMessage ToQueueMessage(MQMessage message)
     {
         QueueMessage resultMessage = null;
         if (message != null)
