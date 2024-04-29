@@ -9,7 +9,6 @@ public static class BuilderExtensions
     public static WebApplicationBuilder AddArchitectures(this WebApplicationBuilder builder)
     {
         builder.Services.AddEndpointsApiExplorer();
-        builder.Services.AddSwaggerGen();
         builder.Services.AddHealthChecks();
         builder.Services.InsertDependencyInjection();
         builder.Services.AddIbmMQ();

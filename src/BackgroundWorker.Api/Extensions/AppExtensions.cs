@@ -6,8 +6,7 @@ public static class AppExtensions
     {
         if (app.Environment.IsDevelopment())
         {
-            app.UseSwagger();
-            app.UseSwaggerUI();
+            
         }
         return app;
     }
