@@ -1,13 +1,14 @@
 using System.Collections;
+using BackgroundWorker.Api.Models;
 using IBM.WMQ;
 using Polly;
 using Polly.Retry;
 
-namespace BackgroundWorker.Service.MQClient;
+namespace BackgroundWorker.Api.ClientMq;
 
 public class MQClient : IMQClient
 {
-    private readonly object InstanceLoker = new object();
+    private readonly object InstanceLoker = new();
     private readonly QueueOptions _queueOptions;
     private Hashtable _connectionOptions;
     private MQQueueManager _manager;
@@ -47,7 +48,7 @@ public class MQClient : IMQClient
         {
             queue = Manager.AccessQueue(queueName, openOptions);
         }
-        catch (MQException ex)
+        catch (MQException)
         {
             //_logger.LogError($"Error while trying to access IBM MQ {queueName} - {ex.Message}");
             DisposeQueueManagerConnection();
@@ -64,7 +65,7 @@ public class MQClient : IMQClient
         return policyResult.Result;
     }
 
-    private void EnsureSuccess(PolicyResult<MQQueue> policyResult)
+    private static void EnsureSuccess(PolicyResult<MQQueue> policyResult)
     {
         if (policyResult.Outcome == OutcomeType.Failure && policyResult.FinalException != null)
             throw policyResult.FinalException;
@@ -87,7 +88,7 @@ public class MQClient : IMQClient
             _manager = new MQQueueManager(QManagerName, _connectionOptions);
             //_logger.LogInformation($"Connected to queue manager: {QManagerName}");
         }
-        catch (MQException ex)
+        catch (MQException)
         {
             //_logger.LogError($"A WebSphere MQ error occurred while creating Connection to QManager [{QManagerName}] : {ex}");
             throw;

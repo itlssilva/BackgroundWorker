@@ -1,7 +1,6 @@
 using IBM.WMQ;
-using Microsoft.Extensions.Configuration;
 
-namespace BackgroundWorker.Service;
+namespace BackgroundWorker.Api.Models;
 
 public static class Extensions
 {
@@ -23,8 +22,8 @@ public static class Extensions
         return description;
     }
 
-    public static int[] RetryExceptionCode => new int[]
-    {
+    public static int[] RetryExceptionCode =>
+    [
         MQC.MQRC_CONNECTION_QUIESCING,
         MQC.MQRC_BUFFER_ERROR,
         MQC.MQRC_BUFFER_LENGTH_ERROR,
@@ -39,9 +38,9 @@ public static class Extensions
         MQC.MQRC_SOURCE_BUFFER_ERROR,
         MQC.MQRC_TARGET_BUFFER_ERROR,
         MQC.MQRC_Q_MGR_QUIESCING
-    };
+    ];
 
-    private static Lazy<Dictionary<int, string>> mqErrorDescription = new Lazy<Dictionary<int, string>>(() =>
+    private static readonly Lazy<Dictionary<int, string>> mqErrorDescription = new(() =>
     {
         return new Dictionary<int, string>()
             {

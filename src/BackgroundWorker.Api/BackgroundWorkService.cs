@@ -1,12 +1,11 @@
-using BackgroundWorker.Service.QueueReader;
-using Microsoft.Extensions.Hosting;
+using BackgroundWorker.Api.MqQueueReader;
 
-namespace BackgroundWorker.Service;
+namespace BackgroundWorker.Api;
 
 public class BackgroundWorkerService : BackgroundService
 {
-    private Timer _timer;
-    private int cont;
+    // private Timer _timer;
+    // private int cont;
     private readonly IQueueReader _queueReader;
 
     public BackgroundWorkerService(IQueueReader queueReader)

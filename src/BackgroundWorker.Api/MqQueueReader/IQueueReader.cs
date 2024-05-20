@@ -1,4 +1,6 @@
-namespace BackgroundWorker.Service.QueueReader;
+using BackgroundWorker.Api.Models;
+
+namespace BackgroundWorker.Api.MqQueueReader;
 
 public interface IQueueReader
 {

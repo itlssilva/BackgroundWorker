@@ -1,4 +1,4 @@
-namespace BackgroundWorker.Service;
+namespace BackgroundWorker.Api.Models;
 
 public class QueueMessage
 {
