@@ -1,7 +1,9 @@
 using System.Text;
 using System.Text.Json;
 using BackgroundWorker.Api.Extensions;
+using BackgroundWorker.Api.Kafka;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -16,6 +18,12 @@ builder.Services.ConfigureHttpJsonOptions(options =>
 var app = builder.Build();
 
 app.UseArchitectures();
+
+app.MapPost("/", async ([FromServices]ProducerService service, [FromQuery] string message) =>
+{
+    return await service.SendMessage(message);
+});
+
 app.MapHealthChecks("/health", new HealthCheckOptions
 {
     ResponseWriter = WriteResponse

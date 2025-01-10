@@ -1,4 +1,5 @@
 using BackgroundWorker.Api.ClientMq;
+using BackgroundWorker.Api.Kafka;
 using BackgroundWorker.Api.Models;
 using BackgroundWorker.Api.MqQueueReader;
 
@@ -36,5 +37,6 @@ public static class BuilderExtensions
     {
         services.AddTransient<IMQClient, MQClient>();
         services.AddSingleton<IQueueReader, QueueReader>();
+        services.AddTransient<ProducerService>();
     }
 }
