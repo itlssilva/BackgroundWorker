@@ -25,9 +25,11 @@ public class ProducerService
         try
         {
             string topic = _configuration.GetSection("KafkaConfig").GetSection("TopicName").Value;
+            
+            //using var producer = new ProducerBuilder<string, string>(_producerConfig).Build(); para gerar key + mensagem <string, string>
 
             using var producer = new ProducerBuilder<Null, string>(_producerConfig).Build();
-            var result = await producer.ProduceAsync(topic: topic, new() { Value = message });
+            var result = await producer.ProduceAsync(topic: topic, new Message<Null, string> { Value = message });
             _logger.LogInformation($"{result.Status} - {message}");
             return $"{result.Status} - {message}";            
         }

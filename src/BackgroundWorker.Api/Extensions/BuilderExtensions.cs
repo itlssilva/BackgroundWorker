@@ -37,6 +37,7 @@ public static class BuilderExtensions
     {
         services.AddTransient<IMQClient, MQClient>();
         services.AddSingleton<IQueueReader, QueueReader>();
+        services.AddTransient<IConsumerService, ConsumerService>();
         services.AddTransient<ProducerService>();
     }
 }
