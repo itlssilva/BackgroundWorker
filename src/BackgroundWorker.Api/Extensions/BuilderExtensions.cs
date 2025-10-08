@@ -33,7 +33,7 @@ public static class BuilderExtensions
         services.AddSingleton(queueOptions);
     }
 
-    public static void InsertDependencyInjection(this IServiceCollection services)
+    private static void InsertDependencyInjection(this IServiceCollection services)
     {
         services.AddTransient<IMQClient, MQClient>();
         services.AddSingleton<IQueueReader, QueueReader>();
