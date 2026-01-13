@@ -1,22 +1,22 @@
 using System.Text;
 using BackgroundWorker.Api.Models;
-using BackgroundWorker.Api.ClientMq;
+using BackgroundWorker.Api.Wrappers;
 using IBM.WMQ;
 
 namespace BackgroundWorker.Api.MqQueueReader;
 
 public class QueueReader : IQueueReader
 {
-    private readonly IMQClient _mqClient;
+    private readonly IMqClientWrapper _mqClientWrapper;
     private readonly QueueOptions _queueOptions;
     private readonly MQGetMessageOptions _messageGetOptions = new MQGetMessageOptions();
     private DateTimeOffset LastQueueEmptyWarningReported;
     //private readonly ILoggerManager _logger;
     const int QueueEmptyReportTimeIntervalMinutes = 10;
 
-    public QueueReader(IMQClient mQClient/*, ILoggerManager logger*/, QueueOptions mqOptions)
+    public QueueReader(IMqClientWrapper mQClient/*, ILoggerManager logger*/, QueueOptions mqOptions)
     {
-        _mqClient = mQClient;
+        _mqClientWrapper = mQClient;
         _queueOptions = mqOptions;
         //_logger = logger;
     }
@@ -24,11 +24,11 @@ public class QueueReader : IQueueReader
     public QueueMessage Dequque(string messageId)
     {
         QueueMessage queueMessage = null;
-        MQQueue destination = null;
+        IMqQueue destination = null;
         try
         {
-            //destination = _mqClient.GetResilientQueue(MQC.MQOO_INPUT_AS_Q_DEF | MQC.MQOO_FAIL_IF_QUIESCING, EParametersQueue.Output);
-            destination = _mqClient.GetQueue(_queueOptions.QueueOutPut, (int)EParametersQueue.Output);
+            //destination = _mqClientWrapper.GetResilientQueue(MQC.MQOO_INPUT_AS_Q_DEF | MQC.MQOO_FAIL_IF_QUIESCING, EParametersQueue.Output);
+            destination = _mqClientWrapper.GetQueue(_queueOptions.QueueOutPut, (int)EParametersQueue.Output);
             MQMessage receivedMsg = new()
             {
                 CorrelationId = Encoding.Default.GetBytes(messageId),
@@ -63,7 +63,7 @@ public class QueueReader : IQueueReader
         finally
         {
             destination?.Close();
-            ((IDisposable)destination)?.Dispose();
+            destination?.Dispose();
         }
 
         return queueMessage;
@@ -72,10 +72,10 @@ public class QueueReader : IQueueReader
     public QueueMessage Peek()
     {
         QueueMessage queueMessage = null;
-        MQQueue destination = null;
+        IMqQueue destination = null;
         try
         {
-            destination = _mqClient.GetResilientQueue(MQC.MQOO_BROWSE | MQC.MQOO_FAIL_IF_QUIESCING, EParametersQueue.Output);
+            destination = _mqClientWrapper.GetResilientQueue(MQC.MQOO_BROWSE | MQC.MQOO_FAIL_IF_QUIESCING, EParametersQueue.Output);
             MQMessage receivedMsg = new();
             MQGetMessageOptions gmo = new()
             {
@@ -106,7 +106,7 @@ public class QueueReader : IQueueReader
         finally
         {
             destination?.Close();
-            ((IDisposable)destination)?.Dispose();
+            destination?.Dispose();
         }
         return queueMessage;
     }

@@ -7,10 +7,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{94A336FC-C5B
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BackgroundWorker.Api", "src\BackgroundWorker.Api\BackgroundWorker.Api.csproj", "{7648E7FD-ABC9-41D8-BB2E-3CF23C49826B}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{0AB3BF05-4346-4AA6-1389-037BE0695223}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BackgroundWorker.Api.Tests", "tests\BackgroundWorker.Api.Tests\BackgroundWorker.Api.Tests.csproj", "{0136F0EA-97A2-47B4-9939-BB7702EB42E6}"
+EndProject
 Global
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
-	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Debug|x64 = Debug|x64
@@ -32,8 +33,24 @@ Global
 		{7648E7FD-ABC9-41D8-BB2E-3CF23C49826B}.Release|x64.Build.0 = Release|Any CPU
 		{7648E7FD-ABC9-41D8-BB2E-3CF23C49826B}.Release|x86.ActiveCfg = Release|Any CPU
 		{7648E7FD-ABC9-41D8-BB2E-3CF23C49826B}.Release|x86.Build.0 = Release|Any CPU
+		{0136F0EA-97A2-47B4-9939-BB7702EB42E6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0136F0EA-97A2-47B4-9939-BB7702EB42E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0136F0EA-97A2-47B4-9939-BB7702EB42E6}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{0136F0EA-97A2-47B4-9939-BB7702EB42E6}.Debug|x64.Build.0 = Debug|Any CPU
+		{0136F0EA-97A2-47B4-9939-BB7702EB42E6}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{0136F0EA-97A2-47B4-9939-BB7702EB42E6}.Debug|x86.Build.0 = Debug|Any CPU
+		{0136F0EA-97A2-47B4-9939-BB7702EB42E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0136F0EA-97A2-47B4-9939-BB7702EB42E6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0136F0EA-97A2-47B4-9939-BB7702EB42E6}.Release|x64.ActiveCfg = Release|Any CPU
+		{0136F0EA-97A2-47B4-9939-BB7702EB42E6}.Release|x64.Build.0 = Release|Any CPU
+		{0136F0EA-97A2-47B4-9939-BB7702EB42E6}.Release|x86.ActiveCfg = Release|Any CPU
+		{0136F0EA-97A2-47B4-9939-BB7702EB42E6}.Release|x86.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{7648E7FD-ABC9-41D8-BB2E-3CF23C49826B} = {94A336FC-C5B1-4732-8D07-02111E624900}
+		{0136F0EA-97A2-47B4-9939-BB7702EB42E6} = {0AB3BF05-4346-4AA6-1389-037BE0695223}
 	EndGlobalSection
 EndGlobal

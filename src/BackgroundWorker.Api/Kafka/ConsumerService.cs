@@ -7,26 +7,18 @@ public class ConsumerService : IConsumerService
 {
     private readonly IConfiguration _configuration;
     private readonly IConsumer<Ignore, string> _consumer;
-    private readonly ConsumerConfig _consumerConfig;
     private readonly ILogger<ConsumerService> _logger;
-    private ConsumerKafkaModel consumerKafkaModel;
+    private readonly ConsumerKafkaModel _consumerKafkaModel;
 
-    public ConsumerService(IConfiguration configuration, ILogger<ConsumerService> logger)
+    public ConsumerService(IConfiguration configuration, ILogger<ConsumerService> logger, IConsumer<Ignore, string> consumer)
     {
         _configuration = configuration;
         _logger = logger;
+        _consumer = consumer;
 
-        string bootstrapServer = _configuration.GetSection("KafkaConfig").GetSection("BootstrapServer").Value;
-        string topic = _configuration.GetSection("KafkaConfig").GetSection("TopicName").Value;
-        consumerKafkaModel = new(bootstrapServer, topic);
-        _consumerConfig = new ConsumerConfig()
-        {
-            BootstrapServers = consumerKafkaModel.BootstrapServer,
-            GroupId = consumerKafkaModel.Group,
-            AutoOffsetReset = AutoOffsetReset.Earliest
-        };
-
-        _consumer = new ConsumerBuilder<Ignore, string>(_consumerConfig).Build();
+        var bootstrapServer = _configuration.GetSection("KafkaConfig").GetSection("BootstrapServer").Value;
+        var topic = _configuration.GetSection("KafkaConfig").GetSection("TopicName").Value;
+        _consumerKafkaModel = new ConsumerKafkaModel(bootstrapServer, topic);
     }
 
     public void ConsumerServiceClose()
@@ -38,7 +30,7 @@ public class ConsumerService : IConsumerService
     public string GetMessageAsync(CancellationToken stoppingToken)
     {
         _logger.LogInformation("Aguardando mensagens");
-        _consumer.Subscribe(consumerKafkaModel.TopicName);
+        _consumer.Subscribe(_consumerKafkaModel.TopicName);
         var result = _consumer.Consume(stoppingToken);
         return result.Message.Value;
     }
