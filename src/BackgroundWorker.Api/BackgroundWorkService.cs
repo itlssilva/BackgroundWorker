@@ -33,10 +33,9 @@ public class BackgroundWorkerService(IQueueReader queueReader, IConsumerService 
         //Console.WriteLine(ret?.Data);
     }
 
-    public override Task StopAsync(CancellationToken cancellationToken)
+    public override async Task StopAsync(CancellationToken cancellationToken)
     {
         consumerService.ConsumerServiceClose();
-        // return base.StopAsync(cancellationToken);
-        return Task.CompletedTask;
+        await base.StopAsync(cancellationToken);
     }
 }
